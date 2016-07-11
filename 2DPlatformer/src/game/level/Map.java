@@ -4,6 +4,7 @@ import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.opengl.Texture;
 
 import toolbox.Constants;
+import toolbox.SaveSystem;
 import Textures.ModelTexture;
 import display.renderer.Loader;
 import game.Game;
@@ -17,22 +18,25 @@ public class Map {
 	
 	public Map() {
 		
-		TileSet tileset = new TileSet("Standart", "TestTileSet", 32, 32);
-		Loader loader = new Loader();
+		TileSet tileset = new TileSet("standartTileset", "Graphics/TestTileSet", 32, 32);
 		
-		RawModel model= loader.loadToVAO(Constants.QuadVerticies(1, 1), Constants.TextureCords(), Constants.QuadIndices());
-		ModelTexture texture = new ModelTexture(loader.loadTexture("transparence"));
-		TexturedModel staticModel = new TexturedModel(model, texture);
-		Entity entity = new Entity(staticModel);
-		GameObject.addEntity("Test", entity);
+		int mapID[][];
 		
-		for(int x = 0; x < 25; x++){
-			for(int y = 0; y < 25; y++){
-				Game.addEntity(tileset.getTile(0, 0, new Vector2f(x, y), 1, 0));
+		
+		/*SaveSystem saveSystem = new SaveSystem("res/levels/", "lvl");
+		saveSystem.addBufferLine("width: 100");
+		saveSystem.addBufferLine("height: 20");
+		for(int y = 0; y < 20; y++){
+			for(int x = 0; x < 100; x++){
+				saveSystem.addToBuffer("-0001");
 			}
+			saveSystem.addBufferLine("");
 		}
+		saveSystem.save("testLevel");*/
 		
-		Game.addEntity(new GameObject("Test", new Vector2f(0,0), 1.5f, 1));
+		mapID = LevelFileReader.read("testLevel");
+		
+		LevelInterpreter.generateLevel(mapID, 100, 20, tileset);
 	}
 	
 	public void cleanUp(){

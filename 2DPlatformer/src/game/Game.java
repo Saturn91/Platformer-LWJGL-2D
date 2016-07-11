@@ -102,4 +102,8 @@ public class Game {
 		}		
 		return light;
 	}
+	
+	public static void deleteGameObjects(){
+		gameObjects = new ArrayList<>();
+	}
 }

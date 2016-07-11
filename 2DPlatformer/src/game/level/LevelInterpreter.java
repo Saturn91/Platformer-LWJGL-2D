@@ -1,0 +1,47 @@
+package game.level;
+
+import org.lwjgl.util.vector.Vector2f;
+
+import game.Game;
+import game.entities.costum.GameObject;
+import game.entities.costum.tileset.TileSet;
+
+public class LevelInterpreter {
+	
+	public static void generateLevel(int[][] mapID, int mapWidth, int mapHeight, TileSet tileset){
+		try {
+			int test = mapID[mapWidth-1][mapHeight-1];
+			Game.deleteGameObjects();
+			for(int x = 0; x < mapWidth; x++){
+				for(int y = 0; y < mapHeight; y++){
+					int adress = mapID[x][y];
+					if(adress != -1){
+						int numInY = adress%100;
+						int numInX = (adress-numInY)/100;
+						Game.addEntity(tileset.getTile(numInX, numInY, new Vector2f(x,y), 1, 0));
+					}					
+				}
+			}
+		} catch (Exception e) {
+			System.err.println("LevelInterpreter wrong Parameters Mapwidth/height");
+		}
+	}
+	
+	public static void generateLevelWithoutOverriting(int[][] mapID, int mapWidth, int mapHeight, TileSet tileset){
+		try {
+			int test = mapID[mapWidth-1][mapHeight-1];
+			for(int x = 0; x < mapWidth; x++){
+				for(int y = 0; y < mapHeight; y++){
+					int adress = mapID[x][y];
+					if(adress != -1){
+						int numInY = adress%100;
+						int numInX = (adress-numInY)/100;
+						Game.addEntity(tileset.getTile(numInX, numInY, new Vector2f(x,y), 1, 0));
+					}
+				}
+			}
+		} catch (Exception e) {
+			System.err.println("LevelInterpreter wrong Parameters Mapwidth/height");
+		}
+	}
+}
