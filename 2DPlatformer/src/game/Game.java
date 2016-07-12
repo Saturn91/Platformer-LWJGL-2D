@@ -31,8 +31,7 @@ public class Game {
 	 * get trough all entities and render them
 	 */
 	public void render(){
-		//Camera
-		camera.move();
+		
 		//Prepare Renderer
 		renderer.prepare();
 		
@@ -55,12 +54,13 @@ public class Game {
 	/**
 	 * Change all states of Entities. 
 	 */
-	
-	public void tick(){
-		
+	public void tick(long delta){
+		//Camera
+		camera.tick(delta);
+		map.tick(delta);
 	}
 	
-	public static void addEntity(GameObject gameObject){
+	public static void addGameObject(GameObject gameObject){
 		gameObjects.add(gameObject);
 	}
 	

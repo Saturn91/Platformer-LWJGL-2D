@@ -18,7 +18,7 @@ public class LevelInterpreter {
 					if(adress != -1){
 						int numInY = adress%100;
 						int numInX = (adress-numInY)/100;
-						Game.addEntity(tileset.getTile(numInX, numInY, new Vector2f(x,y), 1, 0));
+						Game.addGameObject(tileset.getTile(numInX, numInY, new Vector2f(x,y), 1, 0));
 					}					
 				}
 			}
@@ -36,7 +36,7 @@ public class LevelInterpreter {
 					if(adress != -1){
 						int numInY = adress%100;
 						int numInX = (adress-numInY)/100;
-						Game.addEntity(tileset.getTile(numInX, numInY, new Vector2f(x,y), 1, 0));
+						Game.addGameObject(tileset.getTile(numInX, numInY, new Vector2f(x,y), 1, 0));
 					}
 				}
 			}

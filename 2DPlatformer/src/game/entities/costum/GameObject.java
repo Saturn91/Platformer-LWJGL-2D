@@ -11,7 +11,7 @@ public class GameObject {
 	private static ArrayList<Entity> entities = new ArrayList<>();
 	private static ArrayList<String> knownEntities = new ArrayList<>();
 	private float rotZ;
-	private Vector2f position;
+	protected Vector2f position;
 	private float scale;
 	private int layer;
 	private float renderLayer;

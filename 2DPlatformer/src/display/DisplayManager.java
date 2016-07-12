@@ -44,24 +44,11 @@ public class DisplayManager {
 		GL11.glViewport(0, 0, width, height);		
 	}
 	
-	private int tickCounter = 0;
-	private long lastTick = 0;
-	public void updateDisplay(){
-		nowTime = System.currentTimeMillis();
-		tickCounter ++;
-		delta = nowTime - lastTick;
-		if(delta > longestDelta){
-			longestDelta = delta;
-		}
-		if(nowTime - lastTimeTickLine >= 1000){
-			System.out.println("ticks: " + tickCounter + " longest delta: " + longestDelta + "ms");
-			tickCounter = 0;
-			longestDelta = 0;
-			lastTimeTickLine = nowTime;
-		}
-		lastTick = System.currentTimeMillis();
+	public long updateDisplay(){
+		
 		Display.sync(sync);
 		Display.update();
+		return delta;
 	}
 	
 	public void closeDisplay(){

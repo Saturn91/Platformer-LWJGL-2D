@@ -1,5 +1,7 @@
 package game.entities.standart;
 
+import game.controller.Controler;
+
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.util.vector.Vector3f;
 
@@ -10,36 +12,17 @@ public class Camera {
 	private Vector3f position = new Vector3f(0,0,0);
 	private float pitch;	//High of Camera
 	private float yaw;		//aiming left an d right
-	private float speed = 0.005f;
+	private float speed = 0.0005f;
+	private Controler controler;
 	
 	public Camera() {
-		
+		controler = new Controler();
 	}
 	
-	public void move(){
-		if(Keyboard.isKeyDown(Keyboard.KEY_W)){
-			position.y +=speed*Renderer.getZoom();
-		}
-		
-		if(Keyboard.isKeyDown(Keyboard.KEY_S)){
-			position.y -=speed*Renderer.getZoom();
-		}
-		
-		if(Keyboard.isKeyDown(Keyboard.KEY_D)){
-			position.x +=speed*Renderer.getZoom();
-		}
-		
-		if(Keyboard.isKeyDown(Keyboard.KEY_A)){
-			position.x -=speed*Renderer.getZoom();
-		}
-		
-		if(Keyboard.isKeyDown(Keyboard.KEY_SPACE)){
-			position.z +=speed*Renderer.getZoom();
-		}
-		
-		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)){
-			position.z -=speed*Renderer.getZoom();
-		}
+	public void tick(long delta){
+		controler.tick(delta);
+		position.x = controler.getPosition().x;
+		position.y = controler.getPosition().y;
 	}
 
 	public Vector3f getPosition() {
@@ -56,5 +39,9 @@ public class Camera {
 
 	public void setSpeed(float speed){
 		this.speed = speed;
+	}
+	
+	public void setZoom(float zoom){
+		position.z = zoom;
 	}
 }

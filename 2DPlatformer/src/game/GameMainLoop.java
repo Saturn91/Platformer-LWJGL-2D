@@ -25,14 +25,37 @@ public class GameMainLoop {
 	
 	public void GameLoop(){
 		while(!Display.isCloseRequested()){
-			tick();
+			tick(getTick());
 			game.render();
 			display.updateDisplay();
 		}
 	}
 	
-	private void tick() {
-		game.tick();
+	private int tickCounter = 0;
+	private long lastTick = 0;
+	private long nowTime;
+	private long delta;
+	private long longestDelta;
+	private long lastTimeTickLine;
+	private long getTick(){
+		nowTime = System.currentTimeMillis();
+		tickCounter ++;
+		delta = nowTime - lastTick;
+		if(delta > longestDelta){
+			longestDelta = delta;
+		}
+		if(nowTime - lastTimeTickLine >= 1000){
+			System.out.println("ticks: " + tickCounter + " longest delta: " + longestDelta + "ms");
+			tickCounter = 0;
+			longestDelta = 0;
+			lastTimeTickLine = nowTime;
+		}
+		lastTick = System.currentTimeMillis();
+		return delta;
+	}
+
+	private void tick(long delta) {
+		game.tick(delta);
 	}
 
 	public void close(){
