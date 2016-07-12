@@ -5,6 +5,7 @@ import org.lwjgl.util.vector.Vector2f;
 import display.renderer.Loader;
 import game.entities.costum.creatures.Player;
 import game.entities.costum.tileset.TileSet;
+import game.entities.standart.Camera;
 
 public class Map {
 	private Player player;
@@ -20,6 +21,7 @@ public class Map {
 		LevelInterpreter.generateLevel(mapID, 100, 20, tileset);
 		
 		player = new Player(new Vector2f(1, 2));
+		Camera.bindTo(player.getGameObject());
 	}
 	
 	public void tick(long delta){

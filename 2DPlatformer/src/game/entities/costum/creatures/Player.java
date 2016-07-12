@@ -8,24 +8,26 @@ import game.controller.Controler;
 import game.entities.costum.GameObject;
 import game.entities.costum.tileset.TileSet;
 
-public class Player extends GameObject{
+public class Player{
 	private Controler controler = new Controler();
 	private TileSet playerTileSet;
+	private static final String NAME = "Player";
+	private GameObject object;
 
 	public Player(Vector2f position) {
-		super("Player", position, 1, 1);
-		playerTileSet = new TileSet("player", "Graphics/Player/player", 32, 32);
-		Game.addGameObject(playerTileSet.getTile(0, 0, position, 1, 1));
+		playerTileSet = new TileSet(NAME, "Graphics/Player/player", 32, 32);
+		object = playerTileSet.getTile(0, 0, position, 1, 1);
+		Game.addGameObject(object);
 		controler.reSetPosition(position);
-		controler.setKey(0, Keyboard.KEY_UP);
-		controler.setKey(1, Keyboard.KEY_DOWN);
-		controler.setKey(2, Keyboard.KEY_RIGHT);
-		controler.setKey(3, Keyboard.KEY_LEFT);
 	}
 	
 	public void tick(long delta){
 		controler.tick(delta);
-		position = controler.getPosition();
+		object.setPosition(controler.getPosition());
+	}
+	
+	public GameObject getGameObject(){
+		return object;
 	}
 	
 }

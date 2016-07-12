@@ -28,7 +28,7 @@ public class GameObject {
 			this.layer = layer;
 			this.renderLayer = layer*layerDistance;
 		}else{
-			System.err.println("unknown Entity <" + entityType + ">!");
+			System.err.println("GameObject: unknown Entity <" + entityType + ">!");
 		}
 	}
 	

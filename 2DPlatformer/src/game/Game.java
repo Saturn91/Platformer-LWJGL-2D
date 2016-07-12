@@ -56,8 +56,9 @@ public class Game {
 	 */
 	public void tick(long delta){
 		//Camera
-		camera.tick(delta);
 		map.tick(delta);
+		camera.tick(delta);
+		
 	}
 	
 	public static void addGameObject(GameObject gameObject){

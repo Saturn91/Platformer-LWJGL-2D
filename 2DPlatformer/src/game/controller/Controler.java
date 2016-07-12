@@ -68,6 +68,10 @@ public class Controler {
 		}
 	}
 	
+	public void setSpeed(float speed){
+		this.speed = speed;
+	}
+	
 	
 	
 	
