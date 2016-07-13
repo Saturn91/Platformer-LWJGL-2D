@@ -21,7 +21,7 @@ public class StaticShader extends ShaderProgramm{
 	private int location_viewMatrix;
 	private Light cameraLight = new Light(new Vector2f(0,0), new Vector3f(1, 1, 1));
 	private Vector3f enviromentlight = new Vector3f(0, 0, 0); 
-	private Light lights[];
+	private Light lights[] = new Light[0];
 
 	public StaticShader() {
 		super(VERTEX_FILE, FRAGMENT_FILE);
@@ -87,7 +87,6 @@ public class StaticShader extends ShaderProgramm{
 	
 	public void setPointLights(Light lights[]){
 		this.lights = lights;
-		
 	}
 	
 	

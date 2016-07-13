@@ -9,6 +9,12 @@ import game.entities.costum.GameObject;
 import game.entities.costum.tileset.TileSet;
 
 public class Player{
+	private float[] hitbox = {
+		-0.5f, 0.5f,
+		-0.5f, -0.5f,
+		0.5f, -0.5f,
+		0,5f, 0.5f			
+	};
 	private Controler controler = new Controler();
 	private TileSet playerTileSet;
 	private static final String NAME = "Player";
@@ -29,5 +35,7 @@ public class Player{
 	public GameObject getGameObject(){
 		return object;
 	}
+	
+	
 	
 }
