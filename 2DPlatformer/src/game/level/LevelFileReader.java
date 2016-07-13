@@ -4,12 +4,14 @@ import toolbox.SaveSystem;
 
 public class LevelFileReader {
 	private static SaveSystem saveSystem = new SaveSystem("res/levels/", "lvl");
+	public static int mapWidth;
+	public static int mapHeight;
 	public static int[][] read(String fileName){
 		int map[][] = new int[1][1];
 				
 		saveSystem.readFile("res/levels/"+ fileName);
-		int mapWidth = 0;
-		int mapHeight = 0;
+		mapWidth = 0;
+		mapHeight = 0;
 		try {
 			mapWidth = Integer.parseInt(saveSystem.loadPrefixLine("width:"));
 			mapHeight = Integer.parseInt(saveSystem.loadPrefixLine("height:"));

@@ -1,24 +1,23 @@
 package game.level;
 
+import java.util.ArrayList;
+
 import org.lwjgl.util.vector.Vector2f;
 
 import display.renderer.Loader;
+import game.entities.costum.block.Block;
 import game.entities.costum.creatures.Player;
 import game.entities.costum.tileset.TileSet;
 import game.entities.standart.Camera;
 
 public class Map {
 	private Player player;
+	private ArrayList<Block> blocks;
 	public Map() {
-		
+		blocks = new ArrayList<>();
 		TileSet tileset = new TileSet("standartTileset", "Graphics/TestTileSet", 32, 32);
 		
-		
-		int mapID[][];
-		
-		mapID = LevelFileReader.read("testLevel");
-		
-		LevelInterpreter.generateLevel(mapID, 100, 20, tileset);
+		LevelInterpreter.generateLevel("testLevel", tileset);
 		
 		player = new Player(new Vector2f(1, 2));
 		Camera.bindTo(player.getGameObject());
