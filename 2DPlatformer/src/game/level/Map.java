@@ -13,11 +13,12 @@ import game.entities.standart.Camera;
 public class Map {
 	private Player player;
 	private ArrayList<Block> blocks;
+	private Level level;
 	public Map() {
 		blocks = new ArrayList<>();
 		TileSet tileset = new TileSet("standartTileset", "Graphics/TestTileSet", 32, 32);
 		
-		LevelInterpreter.generateLevel("testLevel", tileset);
+		level = LevelInterpreter.generateLevel("testLevel", tileset);
 		
 		player = new Player(new Vector2f(1, 2));
 		Camera.bindTo(player.getGameObject());
@@ -25,6 +26,9 @@ public class Map {
 	
 	public void tick(long delta){
 		player.tick(delta);
+		if(level.intersects(player.getGameObject().getPosition(), 2)){
+			System.out.println("yep");
+		}
 	}
 	
 	public void cleanUp(){

@@ -34,7 +34,7 @@ public class Block {
 	public boolean isInRange(Vector2f position, float distance){
 		float mesureDistance = new Vector2f(this.position.x - position.x,
 												this.position.y - position.y).length();
-		return distance <= mesureDistance;
+		return mesureDistance <= distance;
 	}
 	
 	private void setHitbox(){
