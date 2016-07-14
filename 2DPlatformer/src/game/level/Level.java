@@ -18,16 +18,13 @@ public class Level {
 	}
 	
 	public boolean intersects(Vector2f position, float distance){
-		int i = 0;
 		for(Block b: blocks){
 			if (b.isInRange(position, distance)){
-				i++;
 				if(b.intersects(position)){
 					return true;
 				}
 			}
 		}
-		System.out.println(i);
 		return false;
 	}
 }
