@@ -26,8 +26,8 @@ public class Map {
 	
 	public void tick(long delta){
 		player.tick(delta);
-		if(level.intersects(player.getGameObject().getPosition(), 1)){
-			System.out.println("Map: intersects");
+		if(level.intersects(player.getHitbox(), 1)){
+			
 		}
 	}
 	

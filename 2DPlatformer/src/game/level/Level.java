@@ -27,4 +27,17 @@ public class Level {
 		}
 		return false;
 	}
+	
+	public boolean intersects(Vector2f vertices[], float distance){
+		for(Vector2f v: vertices){
+			for(Block b: blocks){
+				if (b.isInRange(v, distance)){
+					if(b.intersects(v)){
+						return true;
+					}
+				}
+			}
+		}		
+		return false;
+	}
 }
