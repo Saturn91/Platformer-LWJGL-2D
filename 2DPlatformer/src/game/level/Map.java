@@ -20,15 +20,12 @@ public class Map {
 		
 		level = LevelInterpreter.generateLevel("testLevel", tileset);
 		
-		player = new Player(new Vector2f(1, 2));
+		player = new Player(new Vector2f(1, 2.1f), level);
 		Camera.bindTo(player.getGameObject());
 	}
 	
 	public void tick(long delta){
 		player.tick(delta);
-		if(level.intersects(player.getHitbox(), 1)){
-			
-		}
 	}
 	
 	public void cleanUp(){
