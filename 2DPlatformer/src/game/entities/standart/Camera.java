@@ -23,9 +23,9 @@ public class Camera {
 	
 	public void tick(long delta){
 		if(!boundTo){
-			controler.tick(delta);
+			/*controler.tick(delta);
 			position.x = controler.getPosition().x;
-			position.y = controler.getPosition().y;
+			position.y = controler.getPosition().y;*/
 		}else{
 			position.x = object.getPosition().x;
 			position.y = object.getPosition().y;
