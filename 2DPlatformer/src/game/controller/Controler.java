@@ -42,6 +42,15 @@ public class Controler {
 		}
 	}
 	
+	public boolean changeControl(String name, int key){
+		if(usedCommands.contains(name)){
+			commands.get(usedCommands.indexOf(name)).key = key;
+			return true;
+		}else{
+			return false;
+		}		
+	}
+	
 	
 	private class Command{
 		private int key;
