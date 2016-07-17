@@ -4,7 +4,9 @@ Todo:
 
 2. Player drawing --> check
 
-2.1 Player Animation
+2.1 Player Animation --> check
+
+2.3 update renderer (map.render(renderer, shader))
 
 3. Controler (wich can be changed/ costumized) --> check
 
