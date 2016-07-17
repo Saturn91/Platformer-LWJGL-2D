@@ -60,7 +60,7 @@ public class LevelInterpreter {
 						int numInY = adress%100;
 						int numInX = (adress-numInY)/100;
 						Vector2f position = new Vector2f(x,y);
-						Game.addGameObject(tileset.getTile(numInX, numInY, position, 1, 0));
+						level.addObject(tileset.getTile(numInX, numInY, position, 1, 0));
 						level.addBlock(new Block(position, 1));
 					}					
 				}

@@ -44,12 +44,6 @@ public class Game {
 		
 		shader.loadViewMatrix(camera);
 		
-		
-		for(GameObject g: gameObjects){
-			//TODO check wich entities are on screen
-			renderer.render(g, shader);
-		}
-		
 		for(Animation a: animations){
 			a.tick();
 			renderer.render(a.getActualFrame(), shader);
