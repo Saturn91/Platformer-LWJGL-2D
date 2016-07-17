@@ -32,6 +32,7 @@ public class Map {
 		player.tick(delta);
 	}
 	
+	
 	public void render(Renderer renderer, StaticShader shader){
 		//render Player
 		renderer.render(player.getGameObject(), shader);
