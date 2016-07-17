@@ -40,4 +40,24 @@ public class Level {
 		}		
 		return false;
 	}
+	
+	public float intersectsUp(Vector2f vertices[], float distance){
+		for(Vector2f v: vertices){
+			for(Block b: blocks){
+				if (b.isInRange(v, distance)){
+					return b.intersectsUp(v);
+				}
+			}
+		}		
+		return 0;
+	}
+	
+	public float intersectsUp(Vector2f position, float distance){
+		for(Block b: blocks){
+			if (b.isInRange(position, distance)){
+				return b.intersectsUp(position);
+			}
+		}	
+		return 0;
+	}
 }

@@ -21,6 +21,21 @@ public class Block {
 			position.y >= hitboxes[1][0].y);
 	}
 	
+	public float intersectsUp(Vector2f position){
+		if(	position.x >= hitboxes[0][1].x &&
+			position.x <= hitboxes[1][1].x &&
+			position.y <= hitboxes[0][1].y &&
+			position.y >= hitboxes[1][0].y){
+			return position.y - hitboxes[0][1].y;
+		}else{
+			if(position.y - hitboxes[0][1].y >0 ){
+				return position.y - hitboxes[0][1].y;
+			}else{
+				return 0;
+			}
+		}
+	}
+	
 	public void setPosition(Vector2f position){
 		this.position = position;
 		setHitbox();

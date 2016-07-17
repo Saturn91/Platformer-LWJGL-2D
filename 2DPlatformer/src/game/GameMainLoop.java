@@ -38,9 +38,13 @@ public class GameMainLoop {
 	private long longestDelta;
 	private long lastTimeTickLine;
 	private long getTick(){
-		nowTime = System.currentTimeMillis();
+		nowTime = System.currentTimeMillis()/10;
 		tickCounter ++;
+		if(lastTick == 0){
+			lastTick = nowTime;
+		}
 		delta = nowTime - lastTick;
+		
 		if(delta > longestDelta){
 			longestDelta = delta;
 		}
