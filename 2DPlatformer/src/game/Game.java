@@ -3,6 +3,7 @@ package game;
 import game.entities.costum.GameObject;
 import game.entities.costum.creatures.Animation;
 import game.entities.light.Light;
+import game.entities.light.LightEngine;
 import game.entities.standart.Camera;
 import game.level.Map;
 
@@ -33,7 +34,7 @@ public class Game {
 	 * get trough all entities and render them
 	 */
 	public void render(){
-		
+		shader.setPointLights(LightEngine.getLights());
 		//Prepare Renderer
 		renderer.prepare();
 		
@@ -80,13 +81,13 @@ public class Game {
 		animations = new ArrayList<>();
 		shader = new StaticShader();
 		shader.setEnviromentLight(new Vector3f(0.05f,0.02f,0.05f));
-		Light light = new Light(new Vector2f(0,0), new Vector3f(0.8f, 0.6f, 0.8f));
-		shader.configureCameraLight(light);
-		shader.setPointLights(generateLights());
+		Light light = new Light(new Vector2f(0,0), new Vector3f(0f, 0.0f, 0.0f));
+		shader.configureCameraLight(light);		
 		camera = new Camera();
 		renderer = new Renderer(shader);
 		renderer.setZoom(10);
 		map = new Map();
+		
 	}
 	
 	public Vector3f generateColor(){
