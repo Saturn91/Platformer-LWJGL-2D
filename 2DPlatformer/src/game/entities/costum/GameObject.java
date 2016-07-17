@@ -13,7 +13,6 @@ public class GameObject {
 	private float rotZ;
 	protected Vector2f position;
 	private float scale;
-	private int layer;
 	private float renderLayer;
 	private static final float layerDistance = 0.01f;
 	private int textureID = -999;
@@ -25,7 +24,6 @@ public class GameObject {
 			this.scale = scale;
 			this.position = position;
 			this.thisName = entityType;
-			this.layer = layer;
 			this.renderLayer = layer*layerDistance;
 		}else{
 			System.err.println("GameObject: unknown Entity <" + entityType + ">!");
@@ -37,7 +35,6 @@ public class GameObject {
 			this.scale = scale;
 			this.position = position;
 			this.thisName = entityType;
-			this.layer = layer;
 			this.renderLayer = layer*layerDistance;
 			this.textureID = textureID;
 		}else{

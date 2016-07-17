@@ -23,13 +23,20 @@ public class Player{
 	private Controler controler = new Controler();
 	private TileSet playerTileSet;
 	private static final String NAME = "Player";
+	private Animation walkAnimation;
 	private GameObject object;
 
 	public Player(Vector2f position) {
 		this.position = position;
 		playerTileSet = new TileSet(NAME, "Graphics/Player/player", 32, 32);
-		object = playerTileSet.getTile(0, 0, position, 1, 1);
-		Game.addGameObject(object);
+		walkAnimation = new Animation(playerTileSet);
+		walkAnimation.addFrame(0, 0, position, 125);
+		walkAnimation.addFrame(1, 0, position, 125);
+		walkAnimation.addFrame(2, 0, position, 125);
+		walkAnimation.addFrame(3, 0, position, 125);
+		object = walkAnimation.getActualFrame(position);
+		//Game.addGameObject(object);
+		Game.addAnimation(walkAnimation);
 		controler = new Controler();
 		controler.addCommand("up", Keyboard.KEY_W);
 		controler.addCommand("right", Keyboard.KEY_D);
@@ -39,7 +46,13 @@ public class Player{
 	
 	public void tick(long delta){
 		updatePosition(delta);
+		updateAnimation();
 		updateHitbox();
+	}
+	
+	public void updateAnimation(){
+		walkAnimation.tick();
+		object = walkAnimation.getActualFrame(position);
 	}
 	
 	private void updatePosition(long delta){

@@ -1,6 +1,7 @@
 package game;
 
 import game.entities.costum.GameObject;
+import game.entities.costum.creatures.Animation;
 import game.entities.light.Light;
 import game.entities.standart.Camera;
 import game.level.Map;
@@ -18,6 +19,7 @@ import display.renderer.Renderer;
 public class Game {
 	
 	private static ArrayList<GameObject> gameObjects;
+	private static ArrayList<Animation> animations;
 	private Renderer renderer;
 	private StaticShader shader;
 	private Map map;
@@ -48,6 +50,10 @@ public class Game {
 			renderer.render(g, shader);
 		}
 		
+		for(Animation a: animations){
+			renderer.render(a.getActualFrame(new Vector2f(0, 0)), shader);
+		}
+		
 		shader.stop();
 	}
 	
@@ -65,11 +71,16 @@ public class Game {
 		gameObjects.add(gameObject);
 	}
 	
+	public static void addAnimation(Animation animation){
+		animations.add(animation);
+	}
+	
 	/**
 	 * build Game
 	 */
 	public void init(){
 		gameObjects = new ArrayList<>();
+		animations = new ArrayList<>();
 		shader = new StaticShader();
 		shader.setEnviromentLight(new Vector3f(0.05f,0.02f,0.05f));
 		Light light = new Light(new Vector2f(0,0), new Vector3f(0.8f, 0.6f, 0.8f));
