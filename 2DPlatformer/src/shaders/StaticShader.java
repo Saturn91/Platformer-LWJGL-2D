@@ -81,7 +81,7 @@ public class StaticShader extends ShaderProgramm{
 				setShaderVariablef("allLights[" + i + "].range", lights[i].getRange());
 			}
 		}else{
-			System.err.println("StaticShader: at the moment only 10 lights are allowed!");
+			System.err.println("StaticShader: at the moment only 25 lights are allowed!");
 		}
 	}
 	

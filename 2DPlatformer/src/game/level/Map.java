@@ -23,7 +23,7 @@ public class Map {
 		lightEngine = new LightEngine(25);
 		Torch torch = new Torch(new Vector2f(2, 3));
 		level = LevelInterpreter.generateLevel("testLevel", tileset);
-		lightEngine.addLight(torch.getLight());
+		LightEngine.addLight(torch.getLight());
 		player = new Player(new Vector2f(1, 2));
 		Camera.bindTo(player.getGameObject());
 	}

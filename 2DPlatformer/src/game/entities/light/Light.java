@@ -9,7 +9,6 @@ public class Light {
 	private float strenght = 3f;	
 	private float range = 10f;
 	public Light(Vector2f position, Vector3f color) {
-		super();
 		this.position = position;
 		this.color = color;
 	}

@@ -15,7 +15,8 @@ public class Torch {
 	
 	public Torch(Vector2f position){
 		this.position = position;
-		light = new Light(position, new Vector3f(255, 200, 0));
+		light = new Light(position, new Vector3f(1, 0.75f, 0.25f));
+		light.setStrenght(2.5f);
 		torchAnimation = new Animation(new TileSet("Torch", "Graphics/Things/torchTileSet", 32, 32));
 		torchAnimation.addFrame(0, 0, position, 150);
 		torchAnimation.addFrame(1, 0, position, 150);
