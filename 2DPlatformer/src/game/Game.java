@@ -51,8 +51,10 @@ public class Game {
 		}
 		
 		for(Animation a: animations){
-			renderer.render(a.getActualFrame(new Vector2f(0, 0)), shader);
+			renderer.render(a.getActualFrame(new Vector2f(0, 1)), shader);
 		}
+		
+		map.render(renderer, shader);
 		
 		shader.stop();
 	}

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import org.lwjgl.util.vector.Vector2f;
 
+import shaders.StaticShader;
 import display.renderer.Loader;
+import display.renderer.Renderer;
 import game.entities.costum.block.Block;
 import game.entities.costum.creatures.Player;
 import game.entities.costum.tileset.TileSet;
@@ -26,9 +28,11 @@ public class Map {
 	
 	public void tick(long delta){
 		player.tick(delta);
-		if(level.intersects(player.getHitbox(), 1)){
-			
-		}
+	}
+	
+	public void render(Renderer renderer, StaticShader shader){
+		//render Player
+		renderer.render(player.getGameObject(), shader);
 	}
 	
 	public void cleanUp(){

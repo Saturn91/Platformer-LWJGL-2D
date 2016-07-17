@@ -35,8 +35,6 @@ public class Player{
 		walkAnimation.addFrame(2, 0, position, 125);
 		walkAnimation.addFrame(3, 0, position, 125);
 		object = walkAnimation.getActualFrame(position);
-		//Game.addGameObject(object);
-		Game.addAnimation(walkAnimation);
 		controler = new Controler();
 		controler.addCommand("up", Keyboard.KEY_W);
 		controler.addCommand("right", Keyboard.KEY_D);
