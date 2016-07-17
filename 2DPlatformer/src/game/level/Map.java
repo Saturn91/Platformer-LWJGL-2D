@@ -9,6 +9,7 @@ import display.renderer.Loader;
 import display.renderer.Renderer;
 import game.entities.costum.block.Block;
 import game.entities.costum.creatures.Player;
+import game.entities.costum.things.Torch;
 import game.entities.costum.tileset.TileSet;
 import game.entities.standart.Camera;
 
@@ -19,7 +20,7 @@ public class Map {
 	public Map() {
 		blocks = new ArrayList<>();
 		TileSet tileset = new TileSet("standartTileset", "Graphics/TestTileSet", 32, 32);
-		
+		Torch torch = new Torch(new Vector2f(2, 3));
 		level = LevelInterpreter.generateLevel("testLevel", tileset);
 		
 		player = new Player(new Vector2f(1, 2));

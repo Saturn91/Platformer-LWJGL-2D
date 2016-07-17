@@ -30,6 +30,7 @@ public class Player{
 		this.position = position;
 		playerTileSet = new TileSet(NAME, "Graphics/Player/player", 32, 32);
 		walkAnimation = new Animation(playerTileSet);
+		walkAnimation.setLayer(3);
 		walkAnimation.addFrame(0, 0, position, 125);
 		walkAnimation.addFrame(1, 0, position, 125);
 		walkAnimation.addFrame(2, 0, position, 125);

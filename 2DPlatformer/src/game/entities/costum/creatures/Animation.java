@@ -55,6 +55,10 @@ public class Animation {
 		actualObject.setPosition(position);
 		return actualObject;
 	}
+	
+	public GameObject getActualFrame(){
+		return actualObject;
+	}
 
 	private class Frame{
 		int durationMS;

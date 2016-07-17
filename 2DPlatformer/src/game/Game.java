@@ -51,7 +51,8 @@ public class Game {
 		}
 		
 		for(Animation a: animations){
-			renderer.render(a.getActualFrame(new Vector2f(0, 1)), shader);
+			a.tick();
+			renderer.render(a.getActualFrame(), shader);
 		}
 		
 		map.render(renderer, shader);
