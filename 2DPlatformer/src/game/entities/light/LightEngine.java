@@ -1,43 +1,43 @@
 package game.entities.light;
 
 public class LightEngine {
-	private Light lights[];
-	private boolean lightsStorage[];
-	private int lightCounter;
+	private static Light t_lights[];
+	private static boolean lightsStorage[];
+	private static int lightCounter;
 	
 	public LightEngine(int maxLights) {
-		lights = new Light[maxLights];
+		t_lights = new Light[maxLights];
 		lightsStorage = new boolean[maxLights];
 		lightCounter = 0;
 	}
 	
-	public int addLight(Light light){
-		for(int i = 0; i < lights.length; i++){
+	public static int addLight(Light light){
+		for(int i = 0; i < t_lights.length; i++){
 			if(!lightsStorage[i]){
 				lightCounter++;
 				lightsStorage[i] = true;
-				lights[i] = light;
+				t_lights[i] = light;
 				return i;
 			}
 		}
-		System.out.println("maxNum of Lights is " + lights.length + "!");
+		System.out.println("maxNum of Lights is " + t_lights.length + "!");
 		return -1;
 	}
 	
-	public void delLight(int i){
-		if(lights[i] != null){
+	public static void delLight(int i){
+		if(t_lights[i] != null){
 			lightsStorage[i] = false;
-			lights[i] = null;
+			t_lights[i] = null;
 			lightCounter --;
 		}		
 	}
 	
-	public Light[] getLights(){
+	public static Light[] getLights(){
 		Light lights[] = new Light[lightCounter];
 		int thisCounter = 0;
 		for(int i = 0; i < lights.length; i++){
-			if(lightsStorage[i]){
-				lights[thisCounter] = lights[i];
+			if(lightsStorage[i] && t_lights[i] != null){
+				lights[thisCounter] = t_lights[i];
 				thisCounter ++;
 			}
 		}
